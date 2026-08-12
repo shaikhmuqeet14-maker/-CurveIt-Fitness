@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurveIt Fitness Studio | Premium Gym in Beed</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3e3e;
+            --primary-dark: #cc0000;
+            --accent: #ffb703;
+            --bg-dark: #0f1115;
+            --bg-card: #181b22;
+            --bg-light: #222631;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(15, 17, 21, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(255, 62, 62, 0.4);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-dark) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 9rem 2rem 5rem;
+            background: linear-gradient(rgba(15, 17, 21, 0.85), rgba(15, 17, 21, 0.95)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .rating-badge i {
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(255, 62, 62, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Offer Section */
+        .offer-section {
+            padding: 6rem 2rem;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .offer-card {
+            background: linear-gradient(145deg, #1c1f28, #13151b);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 3.5rem 2.5rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 62, 62, 0.15);
+            overflow: hidden;
+        }
+
+        .offer-badge-top {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-bottom-left-radius: 15px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .offer-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .offer-header h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .offer-price-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .regular-price {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .offer-price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .offer-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item i {
+            color: #10b981;
+            font-size: 1.3rem;
+        }
+
+        .targets-bar {
+            background: rgba(255, 62, 62, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            border: 1px dashed var(--primary);
+        }
+
+        /* Hiring Section */
+        .hiring-section {
+            padding: 6rem 2rem;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .hiring-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hiring-tag {
+            display: inline-block;
+            background: rgba(255, 183, 3, 0.15);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hiring-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hiring-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .hiring-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-light);
+        }
+
+        .hiring-list li i {
+            color: var(--accent);
+        }
+
+        /* Schedule & Info */
+        .info-section {
+            padding: 6rem 2rem;
+            background: var(--bg-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            font-weight: 800;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+        }
+
+        .info-card h3 i {
+            color: var(--primary);
+        }
+
+        .schedule-list {
+            list-style: none;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+        }
+
+        .time {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Contact & Footer */
+        footer {
+            background: #090a0d;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .contact-details p {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .contact-details i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hiring-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .offer-card {
+                padding: 2rem 1.5rem;
+            }
+            .offer-price {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-dumbbell"></i>
+                CurveIt <span>Fitness</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#offer">Special Offer</a></li>
+                <li><a href="#hiring">We're Hiring</a></li>
+                <li><a href="#schedule">Timing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:07756013456" class="nav-btn"><i class="fa-solid fa-phone"></i> Call Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="rating-badge">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>4.9 / 5.0 Rating (92+ Reviews)</span>
+            </div>
+            <h1>Train & Get <span>Perfect Body With Us</span></h1>
+            <p>Welcome to CurveIt Fitness Studio, Beed's premier gym destination. Transform your life with state-of-the-art equipment, personalized guidance, and expert diet planning.</p>
+            <div class="hero-btns">
+                <a href="#offer" class="btn-primary"><i class="fa-solid fa-fire"></i> View Membership Offer</a>
+                <a href="https://www.instagram.com/curveit430/" target="_blank" class="btn-secondary"><i class="fa-brands fa-instagram"></i> Follow on Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Section -->
+    <section id="offer" class="offer-section">
+        <div class="container">
+            <div class="offer-card">
+                <div class="offer-badge-top">Limited Time Offer</div>
+                <div class="offer-header">
+                    <h2>Special Annual Membership Deal</h2>
+                    <p>Everything you need for a complete body transformation in one bundle!</p>
+                    <div class="offer-price-box">
+                        <span class="regular-price">₹11,498</span>
+                        <span class="offer-price">₹9,000 <small style="font-size: 1rem; color: var(--text-light);">Only</small></span>
+                    </div>
+                </div>
+
+                <div class="targets-bar">
+                    🎯 Suitable For: Fat Loss | Muscle Gain | Weight Gain
+                </div>
+
+                <div class="offer-features">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span><strong>1 Year</strong> Full Gym Membership</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span><strong>1 Month</strong> Personal Training</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Personalized Diet Plan</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Monthly Body Fat Analysis</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Regular Progress Review</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Dedicated Trainer Support</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="https://wa.me/917756013456?text=Hi,%20I%20want%20to%20claim%20the%20Rs.9000%20Special%20Gym%20Offer" target="_blank" class="btn-primary" style="background: #25D366; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Claim Offer on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- We're Hiring Section -->
+    <section id="hiring" class="hiring-section">
+        <div class="container">
+            <div class="hiring-box">
+                <div class="hiring-content">
+                    <span class="hiring-tag"><i class="fa-solid fa-briefcase"></i> Careers At CurveIt</span>
+                    <h2>WE'RE HIRING: Female Personal Trainer 💪</h2>
+                    <p>Are you passionate about fitness and helping others transform their lives? CurveIt Fitness Studio is looking for a dedicated Female Personal Trainer to join our team.</p>
+                    <ul class="hiring-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Position:</strong> Female Personal Trainer</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Working Hours:</strong> 4 Hours / day</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Requirement:</strong> Experience & Certification Required</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Perks:</strong> Accommodation Available for Outside Candidates</li>
+                    </ul>
+                    <a href="tel:07756013456" class="btn-primary"><i class="fa-solid fa-user-plus"></i> Apply Now (Call Us)</a>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop" alt="Female Fitness Trainer" style="width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid var(--accent);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule & Info Section -->
+    <section id="schedule" class="info-section">
+        <div class="container">
+            <h2 class="section-title">Studio <span>Information</span></h2>
+            <div class="info-grid">
+                
+                <!-- Timing Card -->
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-clock"></i> Workout Timings</h3>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day">Monday - Saturday</span>
+                            <span class="time">5:30 AM – 9:00 AM</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day">Evening Batch</span>
+                            <span class="time">5:00 PM – 9:00 PM</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day">Sunday</span>
+                            <span class="time" style="color: var(--primary);">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Studio Owner Card -->
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-user-shield"></i> Studio Leadership</h3>
+                    <p style="margin-bottom: 1rem;">Managed & Trained under expert guidance.</p>
+                    <p style="font-size: 1.1rem; color: var(--white); font-weight: 700;">Owner & Head Coach:</p>
+                    <p style="font-size: 1.3rem; color: var(--primary); font-weight: 800; text-transform: uppercase;">Prathamesh Jaybhaye</p>
+                    <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px;">
+                        <p style="font-size: 0.9rem; color: var(--text-muted);"><i class="fa-solid fa-quote-left" style="color: var(--accent);"></i> Dedicated to bringing standard fitness solutions, scientific body transformation, and diet discipline to Beed.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <i class="fa-solid fa-dumbbell"></i> CurveIt <span>Fitness</span>
+                    </div>
+                    <p>CurveIt Fitness Studio - Train and get perfect body with us.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/curveit430/" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="tel:07756013456" class="social-btn"><i class="fa-solid fa-phone"></i></a>
+                        <a href="https://wa.me/917756013456" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-details">
+                    <h3 style="color: var(--white); margin-bottom: 1.2rem;">Visit Our Studio</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> CurveIt Fitness Studio, Deep Plaza, 2nd Floor, Above Vaidyanath Bank, Sneh Nagar, Beed, Maharashtra 431122</p>
+                    <p><i class="fa-solid fa-phone"></i> +91 7756013456</p>
+                    <p><i class="fa-solid fa-user"></i> Owner: Prathamesh Jaybhaye</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 CurveIt Fitness Studio. All Rights Reserved. Designed for Client Demo.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
